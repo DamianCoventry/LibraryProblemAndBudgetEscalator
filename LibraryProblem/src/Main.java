@@ -1,3 +1,14 @@
+/**
+ * Designed and written by Damian Coventry
+ * Copyright (c) 2022, all rights reserved
+ *
+ * Massey University
+ * 159.355 Concurrent Systems
+ * Assignment 2
+ * 2022 Semester 1
+ *
+ */
+
 import java.util.concurrent.CountDownLatch;
 
 public class Main {

@@ -1,3 +1,14 @@
+/**
+ * Designed and written by Damian Coventry
+ * Copyright (c) 2022, all rights reserved
+ *
+ * Massey University
+ * 159.355 Concurrent Systems
+ * Assignment 2
+ * 2022 Semester 1
+ *
+ */
+
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
@@ -26,7 +37,7 @@ public class Reader extends Thread {
         try {
             for (int i = 0; i < NUM_BOOKS; ++i) {
                 int book = chooseBook();
-                withdrawBook(book);
+                borrowBook(book);
                 readBook(book);
                 _library.returnBook(_id, book);       // <-- synchronised
             }
@@ -44,7 +55,7 @@ public class Reader extends Thread {
         return _random.nextInt(Library.NUM_BOOKS);
     }
 
-    private void withdrawBook(int book) throws InterruptedException {
+    private void borrowBook(int book) throws InterruptedException {
         System.out.println("Thread " + _id + " wants book " + book);
         while (!_library.requestBook(_id, book)) {       // <-- synchronised
             waitPatiently();
